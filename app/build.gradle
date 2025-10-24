@@ -1,10 +1,6 @@
-repositories {
-    mavenCentral()
-    maven { url "https://jitpack.io" }
-    google()
+plugins {
+	id 'com.android.application'
 }
-
-apply plugin: 'com.android.application'
 
 def clientProps = new Properties()
 def clientPropFile = new File('client.properties')
@@ -24,16 +20,18 @@ ext {
 
 android {
     compileSdk 36
+    namespace = 'com.gh4a'
+
     defaultConfig {
-        minSdkVersion 23
-        targetSdkVersion 33
-        versionCode 76
-        versionName "4.6.13"
-        applicationId "com.gh4a"
+        applicationId 'com.gh4a'
+        minSdk = 23
+		targetSdk = 33
+        versionCode = 76
+        versionName = "4.6.13"
         resourceConfigurations += ['en']
 
-        buildConfigField 'String', 'CLIENT_ID', ClientId
-        buildConfigField 'String', 'CLIENT_SECRET', ClientSecret
+        buildConfigField 'String', 'CLIENT_ID', "\"${ClientId}\""
+        buildConfigField 'String', 'CLIENT_SECRET', "\"${ClientSecret}\""
     }
 
     signingConfigs {
@@ -42,7 +40,7 @@ android {
 
     buildTypes {
         debug {
-            applicationIdSuffix '.debug'
+            applicationIdSuffix = '.debug'
         }
         release {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -55,7 +53,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_21
         targetCompatibility JavaVersion.VERSION_21
     }
-    namespace 'com.gh4a'
+    
     buildFeatures {
         buildConfig true
     }

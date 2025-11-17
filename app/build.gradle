@@ -26,8 +26,8 @@ android {
         applicationId 'com.gh4a'
         minSdk = 23
 		targetSdk = 33
-        versionCode = 76
-        versionName = "4.6.13"
+        versionCode = 77
+        versionName = "4.6.14"
         resourceConfigurations += ['en']
 
         buildConfigField 'String', 'CLIENT_ID', "\"${ClientId}\""
